@@ -109,16 +109,16 @@ button:hover {
 
 .card h3 {
   margin: 0;
-  font-size: 1.5rem;    /* Made title slightly bigger */
+  font-size: 1.5rem;    
   text-transform: capitalize;
 }
 
 .price {
   font-size: 2rem;
   font-weight: 700;
-  line-height: 1;       /* Prevents huge vertical gaps */
+  line-height: 1;       
   color: var(--text-primary);
-  margin-right: 4px;    /* A little extra breath from the badges */
+  margin-right: 4px;    
 }
 
 .timer {
@@ -217,12 +217,11 @@ button:disabled {
 .input-group label {
   font-size: 0.85rem;
   font-weight: 600;
-  color: #94a3b8; /* Slate-400 */
+  color: #94a3b8; 
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
-/* Sizing helpers */
 .input-group.main {
   flex: 2;
   min-width: 250px;
@@ -233,13 +232,12 @@ button:disabled {
   min-width: 100px;
 }
 
-/* Ensure inputs fill their container */
 .input-group input {
   width: 100%; 
 }
 
-/* Adjust button to match input height + label offset if needed */
+
 .form-row button {
-  height: 46px; /* Matches default input height */
-  margin-bottom: 1px; /* Visual alignment tweaks */
+  height: 46px; 
+  margin-bottom: 1px; 
 }
