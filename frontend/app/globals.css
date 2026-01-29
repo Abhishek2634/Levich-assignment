@@ -181,9 +181,9 @@ button:hover {
 
 .price-container {
   display: flex;
-  align-items: center;  /* Vertically aligns price and badges */
-  gap: 10px;            /* <--- THIS ADDS THE SPACE YOU ASKED FOR */
-  flex-wrap: wrap;      /* Wraps to next line if space runs out */
+  align-items: center;  
+  gap: 10px;            
+  flex-wrap: wrap;     
 }
 
 .badge.ended {
@@ -198,13 +198,11 @@ button:disabled {
   opacity: 0.6;
 }
 
-/* ... keep previous CSS ... */
 
-/* New Input Group Styles */
 .form-row {
   display: flex;
   gap: 16px;
-  align-items: flex-end; /* Aligns inputs and button to bottom */
+  align-items: flex-end; 
   flex-wrap: wrap;
 }
 
