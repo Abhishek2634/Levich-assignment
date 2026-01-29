@@ -10,7 +10,7 @@ export default function Home() {
   const [serverOffset, setServerOffset] = useState(0);
 
   useEffect(() => {
-    fetch("http://localhost:4000/items")
+    fetch(process.env.NEXT_PUBLIC_SOCKET_URL + "/items")
       .then(res => res.json())
       .then(setItems);
 
