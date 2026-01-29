@@ -64,37 +64,44 @@ export default function ItemCard({ item, userId, serverOffset }) {
     });
   };
 
-  // 3. Status Logic
+
+  const isAuctionEnded = timeLeft === "Ended";
   const isWinning = current.highestBidder === userId;
-  const isOutbid = hasBid && !isWinning && timeLeft !== "Ended";
+  const isOutbid = hasBid && !isWinning && !isAuctionEnded;
 
   return (
     <div className={`card ${isFlashing ? "flash-green" : ""}`}>
-      {/* 1. Header Section */}
       <div>
         <h3>{current.title}</h3>
 
-        {/* 2. Price & Badges Row (Flexbox with Gap) */}
         <div className="price-container">
           <span className="price">${current.currentBid}</span>
-          
-          {isWinning && <span className="badge win">You Lead</span>}
+
+          {/* LOGIC CHANGE HERE: Check if ended to show WIN vs LEAD */}
+          {isWinning && (
+            <span className={`badge ${isAuctionEnded ? "winner" : "win"}`}>
+              {isAuctionEnded ? "You Won! 🏆" : "You Lead"}
+            </span>
+          )}
+
           {isOutbid && <span className="badge out">Outbid</span>}
-          {timeLeft === "Ended" && <span className="badge ended">Closed</span>}
+          
+          {/* Optional: Hide 'Closed' if we already show 'You Won' to reduce clutter, 
+              OR keep it. Here I keep it but maybe you want to hide it if won. */}
+          {isAuctionEnded && !isWinning && <span className="badge ended">Closed</span>}
         </div>
       </div>
 
-      {/* 3. Footer Section (Timer left, Button right) */}
       <div className="card-footer">
         <div className="timer">
-           {timeLeft === "Ended" ? "🏁 Ended" : `⏱ ${timeLeft}`}
+          {isAuctionEnded ? "🏁 Ended" : `⏱ ${timeLeft}`}
         </div>
         
         <button 
           onClick={placeBid} 
-          disabled={timeLeft === "Ended"}
+          disabled={isAuctionEnded}
         >
-          {timeLeft === "Ended" ? "Sold" : "Bid +$10"}
+          {isAuctionEnded ? "Sold" : "Bid +$10"}
         </button>
       </div>
     </div>
