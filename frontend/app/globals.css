@@ -136,11 +136,11 @@ button:hover {
 }
 
 .badge.winner {
-  background: rgba(234, 179, 8, 0.2); /* Gold tint background */
-  color: #fbbf24;                      /* Gold text */
-  border: 1px solid #f59e0b;           /* Gold border */
-  box-shadow: 0 0 10px rgba(234, 179, 8, 0.2); /* Subtle glow */
-  animation: popIn 0.5s ease-out;      /* Nice entrance animation */
+  background: rgba(234, 179, 8, 0.2); 
+  color: #fbbf24;                      
+  border: 1px solid #f59e0b;           
+  box-shadow: 0 0 10px rgba(234, 179, 8, 0.2); 
+  animation: popIn 0.5s ease-out;      
 }
 
 @keyframes popIn {
