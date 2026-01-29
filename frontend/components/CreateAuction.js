@@ -13,7 +13,7 @@ export default function CreateAuction({ onCreated }) {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:4000/items", {
+      const res = await fetch(process.env.NEXT_PUBLIC_SOCKET_URL + "/items", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -23,7 +23,6 @@ export default function CreateAuction({ onCreated }) {
         })
       });
 
-      // Check if server actually accepted the request
       if (!res.ok) {
         const errorText = await res.text();
         throw new Error(`Server Error: ${res.status} ${errorText}`);
@@ -35,8 +34,8 @@ export default function CreateAuction({ onCreated }) {
       setPrice(100);
       setDuration(5);
     } catch (err) {
-      console.error("Auction Create Error:", err); // logs to browser console
-      alert(err.message); // alerts the actual error
+      console.error("Auction Create Error:", err); 
+      alert(err.message);
     } finally {
       setLoading(false);
     }
@@ -48,7 +47,6 @@ export default function CreateAuction({ onCreated }) {
       
       <form onSubmit={createAuction} className="form-row">
         
-        {/* Item Name Group */}
         <div className="input-group main">
           <label>Item Name</label>
           <input
