@@ -3,13 +3,11 @@ import Item from "../models/Item.js";
 
 const router = express.Router();
 
-/* GET all items */
 router.get("/", async (req, res) => {
   const items = await Item.find().sort({ auctionEndTime: 1 });
   res.json(items);
 });
 
-/* CREATE auction */
 router.post("/", async (req, res) => {
   const { title, startingPrice, durationMinutes } = req.body;
 
