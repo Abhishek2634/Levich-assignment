@@ -10,12 +10,10 @@ export default function Home() {
   const [serverOffset, setServerOffset] = useState(0);
 
   useEffect(() => {
-    // 1. Load Items
     fetch("http://localhost:4000/items")
       .then(res => res.json())
       .then(setItems);
 
-    // 2. Persist User ID (So refreshing doesn't lose "Winning" status)
     let storedId = localStorage.getItem("auction_user_id");
     if (!storedId) {
       storedId = Math.random().toString(36).slice(2);

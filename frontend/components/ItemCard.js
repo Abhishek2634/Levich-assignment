@@ -8,7 +8,6 @@ export default function ItemCard({ item, userId, serverOffset }) {
   const [isFlashing, setIsFlashing] = useState(false);
   const [hasBid, setHasBid] = useState(false);
 
-  // 1. Timer Logic (Synced with Server Offset)
   useEffect(() => {
     const timer = setInterval(() => {
       const now = Date.now() + serverOffset;
@@ -21,7 +20,6 @@ export default function ItemCard({ item, userId, serverOffset }) {
       } else {
         const m = Math.floor(diff / 60000);
         const s = Math.floor((diff % 60000) / 1000);
-        // Pad with zero (e.g., 05s)
         setTimeLeft(`${m}m ${s < 10 ? '0' : ''}${s}s`);
       }
     }, 1000);
@@ -29,20 +27,17 @@ export default function ItemCard({ item, userId, serverOffset }) {
     return () => clearInterval(timer);
   }, [current, serverOffset]);
 
-  // 2. Socket Listeners (Bid Updates)
   useEffect(() => {
     const handleUpdate = (updated) => {
       if (updated._id === item._id) {
         setIsFlashing(true);
         setCurrent(updated);
-        setTimeout(() => setIsFlashing(false), 500); // Remove flash class
+        setTimeout(() => setIsFlashing(false), 500); 
       }
     };
 
     const handleError = (data) => {
-      // Only alert if I am the one who tried to bid
       if (hasBid && current.highestBidder !== userId) {
-        // Optional: toast notification here
       }
     };
 
@@ -77,7 +72,6 @@ export default function ItemCard({ item, userId, serverOffset }) {
         <div className="price-container">
           <span className="price">${current.currentBid}</span>
 
-          {/* LOGIC CHANGE HERE: Check if ended to show WIN vs LEAD */}
           {isWinning && (
             <span className={`badge ${isAuctionEnded ? "winner" : "win"}`}>
               {isAuctionEnded ? "You Won! 🏆" : "You Lead"}
@@ -86,8 +80,7 @@ export default function ItemCard({ item, userId, serverOffset }) {
 
           {isOutbid && <span className="badge out">Outbid</span>}
           
-          {/* Optional: Hide 'Closed' if we already show 'You Won' to reduce clutter, 
-              OR keep it. Here I keep it but maybe you want to hide it if won. */}
+
           {isAuctionEnded && !isWinning && <span className="badge ended">Closed</span>}
         </div>
       </div>
