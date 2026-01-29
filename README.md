@@ -7,6 +7,10 @@ A real-time auction application where users compete to buy items in the final se
 
 ---
 
+## Live Links
+- **Frontend**: https://levich-assignment.vercel.app/
+- **Backend**: https://levich-assignment-cbhx.onrender.com/
+
 ## ✨ Features
 
 - **Real-Time Bidding:** Instant bid updates across all clients using Socket.io.
@@ -37,9 +41,8 @@ The easiest way to run the application. Ensure you have Docker and Docker Compos
    ```
 
 3. Open your browser:
-   - Frontend: https://levich-assignment.vercel.app/
-   - Backend: https://levich-assignment-cbhx.onrender.com/
-
+   - Frontend: http://localhost:3000
+   - Backend: http://localhost:4000
 ---
 
 ### Option 2 — Manual Setup (Localhost)
